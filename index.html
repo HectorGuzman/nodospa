@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NODO SPA | Ingenieria de software y NotiFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040813;
+      --bg-alt: #081024;
+      --card: #0d162d;
+      --card-strong: #0f1c38;
+      --text: #ecf3ff;
+      --muted: #b5c4d9;
+      --accent: #2ff0c7;
+      --accent-2: #4ba9ff;
+      --stroke: #1c2745;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Sora", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(47, 240, 199, 0.08), transparent 25%),
+                  radial-gradient(circle at 80% 10%, rgba(75, 169, 255, 0.07), transparent 25%),
+                  linear-gradient(140deg, var(--bg), var(--bg-alt));
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0 20px 80px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(5, 9, 19, 0.75);
+      border: 1px solid rgba(44, 68, 112, 0.35);
+      border-radius: 16px;
+      margin: 18px auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav.scrolled {
+      border-color: rgba(47, 240, 199, 0.35);
+      background: rgba(8, 16, 36, 0.9);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+    }
+
+    .brand span {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: linear-gradient(120deg, rgba(47, 240, 199, 0.2), rgba(75, 169, 255, 0.2));
+      border: 1px solid rgba(47, 240, 199, 0.4);
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-weight: 500;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(47, 240, 199, 0.4);
+      background: rgba(47, 240, 199, 0.08);
+    }
+
+    .nav-links .pill {
+      border-color: rgba(75, 169, 255, 0.45);
+      background: linear-gradient(120deg, rgba(75, 169, 255, 0.15), rgba(47, 240, 199, 0.15));
+      color: var(--text);
+    }
+
+    .section {
+      margin: 60px 0;
+      padding: 0 6px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(47, 240, 199, 0.35);
+      background: rgba(47, 240, 199, 0.06);
+      color: var(--accent);
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow strong {
+      color: var(--text);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      color: var(--text);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 12px 0 0;
+      font-size: 1rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(12, 22, 42, 0.9);
+      border: 1px solid var(--stroke);
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(120deg, rgba(47, 240, 199, 0.9), rgba(75, 169, 255, 0.9));
+      color: #041027;
+      box-shadow: 0 10px 30px rgba(47, 240, 199, 0.25);
+    }
+
+    .btn.ghost {
+      border-color: rgba(75, 169, 255, 0.5);
+      color: var(--text);
+      background: rgba(75, 169, 255, 0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 20px 22px;
+      background: linear-gradient(160deg, rgba(13, 22, 45, 0.9), rgba(10, 16, 35, 0.9));
+      box-shadow: var(--shadow);
+    }
+
+    .card.accent {
+      border-color: rgba(47, 240, 199, 0.35);
+      background: linear-gradient(160deg, rgba(47, 240, 199, 0.05), rgba(13, 22, 45, 0.95));
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .list {
+      padding: 10px 0 0 0;
+      margin: 0;
+      list-style: none;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+
+    .list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    .bullet {
+      width: 9px;
+      height: 9px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      flex-shrink: 0;
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(75, 169, 255, 0.4);
+      background: rgba(75, 169, 255, 0.08);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .badge.whatsapp {
+      border-color: rgba(37, 211, 102, 0.45);
+      background: rgba(37, 211, 102, 0.1);
+      color: #dfffee;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .small {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .contact-item {
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+      background: rgba(12, 22, 42, 0.7);
+    }
+
+    .label {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    footer {
+      color: var(--muted);
+      margin-top: 48px;
+      padding: 14px 6px 0 6px;
+      border-top: 1px solid var(--stroke);
+      font-size: 0.95rem;
+    }
+
+    .blob {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at 30% 30%, rgba(47, 240, 199, 0.25), transparent 50%);
+      filter: blur(80px);
+      z-index: -1;
+    }
+
+    .blob.blue {
+      background: radial-gradient(circle at 40% 40%, rgba(75, 169, 255, 0.25), transparent 55%);
+    }
+
+    .grid-lines {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px;
+      mask-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.5), transparent 65%);
+      pointer-events: none;
+      z-index: -2;
+      opacity: 0.35;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding: 0 14px 60px;
+      }
+      .nav {
+        position: sticky;
+        top: 10px;
+      }
+      .nav-links {
+        gap: 6px;
+      }
+      h1 {
+        font-size: 2.1rem;
+      }
+      .section {
+        margin: 46px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-lines"></div>
+  <div class="blob" style="top:-40px; left:-140px;"></div>
+  <div class="blob blue" style="bottom:-60px; right:-120px;"></div>
+  <nav class="nav shell">
+    <div class="brand">NODO<span>SPA</span></div>
+    <div class="nav-links">
+      <a href="#quienes">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#notiflo">NotiFlow</a>
+      <a class="pill" href="#contacto">Hablemos</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section class="section hero" id="inicio">
+      <div class="hero-copy">
+        <div class="eyebrow">Ingenieria de software</div>
+        <h1>NODO SPA construye software y productos que hablan el idioma de las personas.</h1>
+        <p>De la estrategia al delivery, conectamos sistemas con experiencias claras. Nuestro producto <span class="highlight">NotiFlow</span> ayuda a colegios a comunicarse con sus apoderados via WhatsApp, sin friccion ni mensajes perdidos.</p>
+        <div class="chips">
+          <span class="chip">Arquitectura cloud-native</span>
+          <span class="chip">Integraciones con APIs y datos</span>
+          <span class="chip">Automatizacion en WhatsApp</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#contacto">Agendemos una llamada</a>
+          <a class="btn ghost" href="#notiflo">Conoce NotiFlow</a>
+        </div>
+      </div>
+      <div class="card accent">
+        <h3>NotiFlow en pocas palabras</h3>
+        <p>Canal directo entre colegios y apoderados. Comunica avisos, confirma lecturas y mantiene trazabilidad en minutos.</p>
+        <ul class="list">
+          <li><span class="bullet"></span><span>Envios segmentados: cursos, niveles o grupos especificos.</span></li>
+          <li><span class="bullet"></span><span>Plantillas listas para circulares, emergencias y recordatorios.</span></li>
+          <li><span class="bullet"></span><span>Confirmaciones de lectura en tiempo real (canal direccional).</span></li>
+          <li><span class="bullet"></span><span>Panel simple para equipos academicos y administrativos.</span></li>
+        </ul>
+        <div class="cta" style="margin-top:16px;">
+          <a class="btn ghost" href="#contacto">Quiero una demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="quienes">
+      <div class="eyebrow"><strong>Nosotros</strong> | Boutique de ingenieria</div>
+      <div class="card-grid">
+        <div class="card">
+          <h2>Una empresa de producto y delivery tecnico.</h2>
+          <p>Fundada por Hector Guzman, NODO SPA combina discovery, arquitectura y construccion para lanzar rapido sin perder calidad. Creamos plataformas conversacionales, backend robustos y experiencias que se sienten cuidadas.</p>
+          <div class="chips" style="margin-top:14px;">
+            <span class="chip">Discovery + delivery</span>
+            <span class="chip">SRE y buenas practicas</span>
+            <span class="chip">Cultura de experimento</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Como trabajamos</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Empezamos con objetivos claros de negocio y medimos impacto tecnico.</span></li>
+            <li><span class="bullet"></span><span>Disenamos arquitectura pensada para crecer: APIs limpias, observabilidad y seguridad.</span></li>
+            <li><span class="bullet"></span><span>Entregamos incrementos semanales, con demos frecuentes y decisiones transparentes.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Que puedes esperar</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Documentacion ligera y accionable.</span></li>
+            <li><span class="bullet"></span><span>Interacciones humanas: lenguaje claro, sin jerga innecesaria.</span></li>
+            <li><span class="bullet"></span><span>Mentoria tecnica para equipos internos.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="eyebrow"><strong>Servicios</strong> | Ingenieria enfocada en negocio</div>
+      <div class="card-grid">
+        <div class="card accent">
+          <h3>Arquitectura y delivery</h3>
+          <p>Diseno de plataformas, APIs y pipelines que resisten el crecimiento.</p>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Diseno de dominios, contratos y versionado de APIs.</span></li>
+            <li><span class="bullet"></span><span>Despliegues automatizados con observabilidad incluida.</span></li>
+            <li><span class="bullet"></span><span>Modernizacion de sistemas legados con riesgos controlados.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Asesorias tecnicas e IA</h3>
+          <p>Acompanamos decisiones clave antes de construir.</p>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Asesorias en ingenieria de software y arquitectura escalable.</span></li>
+            <li><span class="bullet"></span><span>Migraciones a cloud y modernizacion de componentes criticos.</span></li>
+            <li><span class="bullet"></span><span>Primeros pasos con IA generativa: casos de uso, riesgos y pilotos.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Integraciones conversacionales</h3>
+          <p>Automatizamos flujos en canales que la gente usa a diario.</p>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Bots y asistentes en WhatsApp conectados a tus sistemas.</span></li>
+            <li><span class="bullet"></span><span>Flujos para soporte, alertas y notificaciones transaccionales.</span></li>
+            <li><span class="bullet"></span><span>Governance de plantillas, compliance y medicion.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Acompanamiento continuo</h3>
+          <p>Equipo extendido que combina consultoria y ejecucion.</p>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Roadmaps trimestrales con priorizacion conjunta.</span></li>
+            <li><span class="bullet"></span><span>Revisiones tecnicas y sesiones de pares.</span></li>
+            <li><span class="bullet"></span><span>Entrenamiento para equipos internos y handoff documentado.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notiflo">
+      <div class="eyebrow"><strong>Producto</strong> | NotiFlow</div>
+      <div class="product-grid">
+        <div class="card accent">
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <h2 style="margin:0;">NotiFlow: comunicacion directa para colegios via WhatsApp.</h2>
+            <span class="badge whatsapp">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12.04 2C6.58 2 2.1 6.39 2.1 11.75c0 2.07.62 4.03 1.8 5.72L2 22l4.67-1.47c1.64.9 3.49 1.37 5.37 1.37 5.46 0 9.93-4.39 9.93-9.75C21.97 6.39 17.5 2 12.04 2Zm5.8 13.84c-.25.7-1.45 1.32-2 1.4-.51.07-1.15.1-1.86-.12-.43-.14-.97-.32-1.68-.63-2.96-1.28-4.89-4.25-5.03-4.45-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.26-.3.57-.37.76-.37.19 0 .38 0 .54.01.17.01.41-.07.64.49.23.56.79 1.94.86 2.09.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.12-.3.26-.13.56.17.3.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.3.15.48.12.65-.07.16-.2.75-.86.95-1.15.2-.3.4-.25.68-.15.29.1 1.79.83 2.1.98.31.15.52.23.6.36.08.13.08.75-.17 1.45Z"></path>
+              </svg>
+              WhatsApp ready
+            </span>
+            <span class="badge">En desarrollo - lanzamiento pronto</span>
+          </div>
+          <p>Envios segmentados, confirmaciones y trazabilidad en un panel simple. NotiFlow mantiene a los apoderados informados y reduce llamadas repetitivas.</p>
+          <p class="small">NotiFlow es direccional: envia comunicados y confirma lectura, no procesa respuestas entrantes.</p>
+          <p class="small">Estamos afinando la version inicial; puedes pedir acceso anticipado o agendar un piloto guiado.</p>
+          <div class="chips" style="margin-top:12px;">
+            <span class="chip">Comunicar</span>
+            <span class="chip">Confirmar</span>
+            <span class="chip">Registrar</span>
+          </div>
+          <div class="cta" style="margin-top:16px;">
+            <a class="btn primary" href="mailto:hola@nodospa.com?subject=Acceso%20anticipado%20NotiFlow">Solicitar demo</a>
+            <a class="btn ghost" href="#contacto">Hablar con NODO</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Casos de uso</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Circulares y recordatorios: reuniones, ensayos, salidas pedagogicas.</span></li>
+            <li><span class="bullet"></span><span>Alertas rapidas: contingencias, clima, transporte.</span></li>
+            <li><span class="bullet"></span><span>Seguimiento: confirmacion de lectura sin respuestas entrantes.</span></li>
+            <li><span class="bullet"></span><span>Segmentacion: curso, nivel, programa o grupo especifico.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Por que funciona</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Operado en el canal que los apoderados ya usan.</span></li>
+            <li><span class="bullet"></span><span>Panel sin ruido para equipos academicos.</span></li>
+            <li><span class="bullet"></span><span>Metrica clara: entregados, leidos y respondidos.</span></li>
+            <li><span class="bullet"></span><span>Integrable con sistemas existentes del colegio.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="eyebrow"><strong>Contacto</strong> | Conversemos</div>
+      <div class="card-grid">
+        <div class="card accent">
+          <h2>Cuentanos tu reto digital.</h2>
+          <p>Agenda una llamada para hablar de tu producto, de NotiFlow o de un proyecto a medida. Respondemos en menos de un dia habil.</p>
+          <div class="cta" style="margin-top:12px;">
+            <a class="btn primary" href="mailto:hola@nodospa.com?subject=Quiero%20hablar%20con%20NODO">Escribir ahora</a>
+            <a class="btn ghost" href="#inicio">Volver arriba</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Datos de contacto</h3>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="label">Correo</div>
+              <a href="mailto:hola@nodospa.com">hola@nodospa.com</a>
+            </div>
+            <div class="contact-item">
+              <div class="label">Canal rapido</div>
+              <p style="margin:0;">Disponible para coordinacion por WhatsApp o videollamada.</p>
+            </div>
+            <div class="contact-item">
+              <div class="label">Ubicacion</div>
+              <p style="margin:0;">Empresa remota con base en Latinoamerica.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;">
+      <span>NODO SPA - Ingenieria de software.</span>
+      <span class="muted">Producto destacado: NotiFlow para colegios.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Navegacion con efecto al hacer scroll y scroll suave interno.
+    const nav = document.querySelector(".nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 12);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
