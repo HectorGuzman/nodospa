@@ -234,6 +234,12 @@
       padding: 20px 22px;
       background: linear-gradient(160deg, rgba(13, 22, 45, 0.9), rgba(10, 16, 35, 0.9));
       box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(75, 169, 255, 0.35);
     }
 
     .card.accent {
@@ -380,6 +386,27 @@
       opacity: 0.35;
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px) scale(0.99);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .blob {
+      animation: floaty 14s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, 10px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
     @media (max-width: 720px) {
       body {
         padding: 0 14px 60px;
@@ -398,6 +425,20 @@
         margin: 46px 0;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .blob {
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -410,6 +451,7 @@
       <a href="#quienes">Nosotros</a>
       <a href="#servicios">Servicios</a>
       <a href="#notiflo">NotiFlow</a>
+      <a href="privacy.html" target="_blank" rel="noreferrer">Privacidad</a>
       <a class="pill" href="#contacto">Hablemos</a>
     </div>
   </nav>
@@ -441,6 +483,34 @@
         </ul>
         <div class="cta" style="margin-top:16px;">
           <a class="btn ghost" href="#contacto">Quiero una demo</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="privacidad">
+      <div class="eyebrow"><strong>Legal</strong> | Politicas de privacidad</div>
+      <div class="card-grid">
+        <div class="card accent">
+          <h2>Politicas de privacidad de NODO SPA</h2>
+          <p>Nuestra politica describe como tratamos datos de contacto y uso de los servicios. Es importante revisarla antes de solicitar demos o acceso anticipado a NotiFlow.</p>
+          <div class="chips" style="margin-top:12px;">
+            <span class="chip">Datos de contacto</span>
+            <span class="chip">Uso de WhatsApp</span>
+            <span class="chip">Consentimiento</span>
+          </div>
+          <div class="cta" style="margin-top:16px;">
+            <a class="btn primary" href="privacy.html" target="_blank" rel="noreferrer">Abrir politicas (nueva pagina)</a>
+            <a class="btn ghost" href="#contacto">Tengo dudas</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Resumen rapido</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>No vendemos ni compartimos datos de contacto.</span></li>
+            <li><span class="bullet"></span><span>NotiFlow es direccional: solo envia comunicados; los apoderados no envian datos a la plataforma.</span></li>
+            <li><span class="bullet"></span><span>Datos de analytics o logs se anonimizan para mejorar el servicio.</span></li>
+          </ul>
+          <p class="small" style="margin-top:10px;">La version completa esta disponible en la pagina de politicas.</p>
         </div>
       </div>
     </section>
@@ -621,6 +691,28 @@
         }
       });
     });
+
+    // Animaciones de aparicion al hacer scroll.
+    const revealTargets = Array.from(document.querySelectorAll("main .section, .card"));
+    revealTargets.forEach((el, idx) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(idx * 40, 200)}ms`;
+    });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealTargets.forEach((el) => observer.observe(el));
+    } else {
+      revealTargets.forEach((el) => el.classList.add("visible"));
+    }
   </script>
 </body>
 </html>

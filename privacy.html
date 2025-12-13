@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politicas de privacidad | NODO SPA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040813;
+      --bg-alt: #081024;
+      --card: #0d162d;
+      --text: #ecf3ff;
+      --muted: #b5c4d9;
+      --accent: #2ff0c7;
+      --accent-2: #4ba9ff;
+      --stroke: #1c2745;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Sora", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(47, 240, 199, 0.08), transparent 25%),
+                  radial-gradient(circle at 80% 10%, rgba(75, 169, 255, 0.07), transparent 25%),
+                  linear-gradient(140deg, var(--bg), var(--bg-alt));
+      color: var(--text);
+      min-height: 100vh;
+      padding: 26px 18px 60px;
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { max-width: 900px; margin: 0 auto; }
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 22px;
+      background: linear-gradient(160deg, rgba(13, 22, 45, 0.9), rgba(10, 16, 35, 0.9));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      margin-top: 18px;
+    }
+    h1, h2, h3 { margin: 0 0 6px 0; }
+    p { color: var(--muted); line-height: 1.6; margin: 10px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(47, 240, 199, 0.35);
+      background: rgba(47, 240, 199, 0.06);
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .list { list-style: none; padding: 0; margin: 12px 0; color: var(--muted); }
+    .list li { margin: 8px 0; line-height: 1.5; display: flex; gap: 10px; }
+    .bullet {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(75, 169, 255, 0.5);
+      color: var(--text);
+      background: rgba(75, 169, 255, 0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+    .muted { color: var(--muted); }
+    footer { margin-top: 28px; color: var(--muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="eyebrow">Politicas de privacidad</div>
+    <h1>NODO SPA - Privacidad y tratamiento de datos</h1>
+    <p>Ultima actualizacion: 2025-01-30</p>
+    <div class="card">
+      <h2>Alcance</h2>
+      <p>Estas politicas aplican a los datos recolectados cuando contactas a NODO SPA, solicitas demos o acceso anticipado a NotiFlow, o utilizas nuestros sitios web.</p>
+      <ul class="list">
+        <li><span class="bullet"></span><span>No vendemos ni cedemos datos de contacto.</span></li>
+        <li><span class="bullet"></span><span>Solo usamos la informacion para responder solicitudes, proveer servicios y mejorar la operacion.</span></li>
+        <li><span class="bullet"></span><span>NotiFlow es direccional: envia comunicados y registra confirmaciones de lectura; no procesa mensajes entrantes de apoderados.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Datos que tratamos</h2>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Datos de contacto basicos (nombre, correo, telefono) que nos compartas directamente.</span></li>
+        <li><span class="bullet"></span><span>Metadatos tecnicos minimos para seguridad, analitica agregada y mejora del servicio (por ejemplo, logs anonimizados).</span></li>
+        <li><span class="bullet"></span><span>No recopilamos contenidos sensibles ni almacenamos conversaciones personales.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Conservacion y seguridad</h2>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Guardamos datos solo el tiempo necesario para la finalidad original o cumplimiento legal.</span></li>
+        <li><span class="bullet"></span><span>Aplicamos controles de acceso, cifrado en transito y registros de auditoria.</span></li>
+        <li><span class="bullet"></span><span>El acceso a datos esta limitado a personal autorizado para operar los servicios.</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Tus opciones</h2>
+      <ul class="list">
+        <li><span class="bullet"></span><span>Puedes solicitar acceso, correccion o eliminacion de tus datos de contacto.</span></li>
+        <li><span class="bullet"></span><span>Si eres cliente y necesitas anexos de cumplimiento (ej. acuerdos de tratamiento de datos), podemos compartirlos bajo NDA.</span></li>
+        <li><span class="bullet"></span><span>Para darte de baja de comunicaciones, basta responder o escribirnos indicando tu decision.</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn" href="mailto:hola@nodospa.com?subject=Consulta%20sobre%20privacidad">Contactar sobre privacidad</a>
+        <a class="btn" href="index.html">Volver al sitio</a>
+      </div>
+    </div>
+
+    <footer>
+      NODO SPA - Ingenieria de software. Preguntas de privacidad: <a href="mailto:hola@nodospa.com">hola@nodospa.com</a>
+    </footer>
+  </main>
+</body>
+</html>
