@@ -527,9 +527,18 @@
       .nav {
         position: sticky;
         top: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
       .nav-links {
-        gap: 6px;
+        gap: 8px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .nav-links a {
+        flex: 1 1 48%;
+        text-align: center;
       }
       h1 {
         font-size: 2.1rem;
