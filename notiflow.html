@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NODO SPA | Ingenieria de software y NotiFlow</title>
+  <title>NotiFlow | Comunicaciones masivas por email y push</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -342,10 +342,79 @@
       font-size: 0.95rem;
     }
 
-    .icon {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
+    .price {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 4px 0 4px;
+    }
+
+    .price small {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    .pricing-header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .pill-list .pill {
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(90, 166, 255, 0.25);
+      background: rgba(90, 166, 255, 0.12);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .badge-popular {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: linear-gradient(120deg, rgba(92, 241, 196, 0.16), rgba(90, 166, 255, 0.16));
+      color: var(--text);
+      font-weight: 700;
+      border: 1px solid rgba(92, 241, 196, 0.35);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .plan-popular {
+      border-color: rgba(92, 241, 196, 0.5);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(92, 241, 196, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .plan-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .plan-cta-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 8px;
     }
 
     .small {
@@ -560,177 +629,245 @@
   <div class="blob blue" style="bottom:-60px; right:-120px;"></div>
   <nav class="nav shell">
     <div class="brand">
-      <img src="logo/NodoH_02.png" alt="Logo de NODO SPA" style="height:52px;">
-      <span>NODO</span>
+      <div style="padding:10px; border-radius:12px; background:#000; border:1px solid rgba(255,255,255,0.12); box-shadow:0 12px 30px rgba(0,0,0,0.35); display:flex; align-items:center; gap:10px;">
+        <img src="logo/NotiflowV_02.png" alt="Logo de NotiFlow" style="height:48px;">
+      </div>
+      <span>NotiFlow</span>
     </div>
     <div class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#quienes">Nosotros</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#productos">Productos</a>
+      <a href="index.html#inicio">Inicio NODO</a>
+      <a href="#producto">Producto</a>
+      <a href="#flujo">Flujo</a>
+      <a href="#casos">Casos</a>
       <a href="privacy.html" target="_blank" rel="noreferrer">Privacidad</a>
-      <a class="pill" href="#contacto">Hablemos</a>
+      <a class="pill" href="#contacto">Contacto</a>
     </div>
   </nav>
 
   <main class="shell">
-    <section class="section hero" id="inicio">
+    <section class="section hero" id="producto">
       <div class="hero-copy">
-        <div class="eyebrow">Ingenieria de software</div>
-        <h1>Ingenieria y delivery con foco en confiabilidad y negocio.</h1>
-        <p>NODO SPA disena, construye y opera productos que se sienten solidos: arquitectura escalable, integraciones, datos y comunicaciones. Trabajamos con equipos pequeños, con entregas cortas y visibilidad para negocio.</p>
+        <div class="eyebrow">Producto | NotiFlow</div>
+        <h1>Comunicaciones masivas claras por email y push.</h1>
+        <p>NotiFlow conecta colegios con familias sin ruido: mensajes por email y notificaciones push en la app NotiFlow (iOS/Android), con trazabilidad y apoyo de IA para revisar redaccion y cumplir las politicas internas de comunicacion.</p>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <img src="logo/NotiflowV_02.png" alt="Logo NotiFlow" style="height:44px;">
+          <span class="badge">Piloto activo</span>
+          <span class="badge">Email + push</span>
+        </div>
         <div class="chips">
-          <span class="chip">Arquitectura cloud</span>
-          <span class="chip">Integraciones y datos</span>
-          <span class="chip">Productos digitales</span>
+          <span class="chip">Emails + push</span>
+          <span class="chip">IA asistida</span>
+          <span class="chip">Trazabilidad</span>
         </div>
         <div class="cta">
-          <a class="btn primary" href="#contacto">Agendar una llamada</a>
+          <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Demo%20NotiFlow">Solicitar demo</a>
+          <a class="btn ghost" href="index.html#inicio">Volver a NODO</a>
         </div>
       </div>
       <div class="card accent">
-        <h3>Entrega tecnica con gobernanza.</h3>
-        <p>Discovery ligero, decisiones explicadas y entregables semanales. Priorizamos confiabilidad, observabilidad y seguridad sin perder velocidad.</p>
+        <h3>Que resuelve</h3>
+        <p>Envios segmentados con confirmacion de entrega y lectura, sin depender de chats. Ideal para circulares, alertas rapidas y recordatorios.</p>
         <ul class="list">
-          <li><span class="bullet"></span><span>Arquitectura documentada y contratos claros.</span></li>
-          <li><span class="bullet"></span><span>Integraciones y pipelines con monitoreo.</span></li>
-          <li><span class="bullet"></span><span>Pruebas, trazabilidad y handoff ordenado.</span></li>
+          <li><span class="bullet"></span><span>Panel simple para equipos academicos y administrativos.</span></li>
+          <li><span class="bullet"></span><span>IA para afinar tono y reglas del colegio.</span></li>
+          <li><span class="bullet"></span><span>Dashboards con entregados, fallidos y lecturas.</span></li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="privacidad">
-      <div class="eyebrow"><strong>Legal</strong> | Politicas de privacidad</div>
-      <div class="card-grid">
+    <section class="section" id="casos">
+      <div class="eyebrow"><strong>Casos</strong> | Donde usar NotiFlow</div>
+      <div class="product-grid">
+        <div class="card">
+          <h3>Casos de uso</h3>
+          <ul class="list">
+            <li><span class="bullet"></span><span>Circulares y recordatorios: reuniones, ensayos, salidas pedagogicas.</span></li>
+            <li><span class="bullet"></span><span>Alertas rapidas: contingencias, clima, transporte.</span></li>
+            <li><span class="bullet"></span><span>Seguimiento con confirmacion de lectura.</span></li>
+          </ul>
+        </div>
         <div class="card accent">
-          <h2>Politicas de privacidad de NODO SPA</h2>
-          <p>Nuestra politica describe como tratamos datos de contacto y uso de los servicios. Es importante revisarla antes de solicitar demos o acceso anticipado a NotiFlow.</p>
-          <div class="chips" style="margin-top:12px;">
-            <span class="chip">Datos de contacto</span>
-            <span class="chip">Emails y push</span>
-            <span class="chip">Consentimiento</span>
-          </div>
-          <div class="cta" style="margin-top:16px;">
-            <a class="btn primary" href="privacy.html">Abrir politicas</a>
-            <a class="btn ghost" href="#contacto">Tengo dudas</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="quienes">
-      <div class="eyebrow"><strong>Nosotros</strong> | Boutique de ingenieria</div>
-      <div class="card-grid">
-        <div class="card">
-          <h2>Equipo senior para decisiones y ejecucion.</h2>
-          <p>NODO SPA combina discovery, arquitectura y construccion para lanzar rapido sin sacrificar confiabilidad. Creamos plataformas robustas, integraciones y experiencias claras.</p>
-          <div class="chips" style="margin-top:14px;">
-            <span class="chip">Discovery + delivery</span>
-            <span class="chip">SRE y buenas practicas</span>
-            <span class="chip">Gobernanza tecnica</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Como trabajamos</h3>
+          <h3>Por que funciona</h3>
           <ul class="list">
-            <li><span class="bullet"></span><span>Objetivos claros de negocio con impacto tecnico medible.</span></li>
-            <li><span class="bullet"></span><span>Arquitectura pensada para crecer: APIs limpias, observabilidad y seguridad.</span></li>
-            <li><span class="bullet"></span><span>Entregas semanales, decisiones documentadas y demos frecuentes.</span></li>
+            <li><span class="bullet"></span><span>Envio dual: email y push en la app NotiFlow.</span></li>
+            <li><span class="bullet"></span><span>Panel sin ruido: direccional, sin bandejas de chat.</span></li>
+            <li><span class="bullet"></span><span>Metrica clara: entregados, fallidos y leidos.</span></li>
           </ul>
         </div>
         <div class="card">
-          <h3>Que puedes esperar</h3>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Documentacion accionable y versionada.</span></li>
-            <li><span class="bullet"></span><span>Lenguaje claro, decisiones trazables.</span></li>
-            <li><span class="bullet"></span><span>Mentoria tecnica para equipos internos.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="eyebrow"><strong>Servicios</strong> | Ingenieria enfocada en negocio</div>
-      <div class="card-grid">
-        <div class="card accent">
-          <h3>Arquitectura y delivery</h3>
-          <p>Diseno de plataformas, APIs y pipelines que resisten el crecimiento.</p>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Diseno de dominios, contratos y versionado de APIs.</span></li>
-            <li><span class="bullet"></span><span>Despliegues automatizados con observabilidad incluida.</span></li>
-            <li><span class="bullet"></span><span>Modernizacion de sistemas legados con riesgos controlados.</span></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Asesorias tecnicas e IA</h3>
-          <p>Acompanamos decisiones clave antes de construir.</p>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Asesorias en ingenieria de software y arquitectura escalable.</span></li>
-            <li><span class="bullet"></span><span>Migraciones a cloud y modernizacion de componentes criticos.</span></li>
-            <li><span class="bullet"></span><span>Primeros pasos con IA generativa: casos de uso, riesgos y pilotos.</span></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Integraciones de comunicaciones</h3>
-          <p>Automatizamos envios de email y push desde tus sistemas.</p>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Automatizaciones de correo y push conectadas a tus APIs.</span></li>
-            <li><span class="bullet"></span><span>Flujos para alertas, comunicados y notificaciones transaccionales.</span></li>
-            <li><span class="bullet"></span><span>Governance de plantillas, compliance y medicion.</span></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Acompanamiento continuo</h3>
-          <p>Equipo extendido que combina consultoria y ejecucion.</p>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Roadmaps trimestrales con priorizacion conjunta.</span></li>
-            <li><span class="bullet"></span><span>Revisiones tecnicas y sesiones de pares.</span></li>
-            <li><span class="bullet"></span><span>Entrenamiento para equipos internos y handoff documentado.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="productos">
-      <div class="eyebrow"><strong>Productos</strong> | Soluciones de NODO</div>
-      <div class="card-grid">
-      <div class="card accent">
-        <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-            <div style="padding:8px 10px; border-radius:12px; background:#000; border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center;">
-              <img src="logo/NotiflowV_02.png" alt="Logo NotiFlow" style="height:42px;">
-            </div>
-            <h2 style="margin:0;">NotiFlow</h2>
-            <span class="badge">Comunicaciones</span>
-          </div>
-          <p>Plataforma para envios masivos por email y push a la app NotiFlow (iOS/Android), con trazabilidad simple y dashboards claros.</p>
-          <p class="small">Comunicados direccionales sin ruido de chat; ideal para colegios y equipos administrativos.</p>
+          <h3>Piloto</h3>
+          <p>En desarrollo con colegios pilotos. Podemos habilitar acceso anticipado y medir entregas y lecturas juntos.</p>
           <div class="cta" style="margin-top:12px;">
-            <a class="btn primary" href="notiflow.html">Ver NotiFlow</a>
-            <a class="btn ghost" href="mailto:contacto@nodospa.cl?subject=Quiero%20hablar%20de%20NotiFlow">Hablar con NODO</a>
+            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Acceso%20piloto%20NotiFlow">Pedir acceso</a>
+            <a class="btn ghost" href="#flujo">Ver flujo</a>
           </div>
         </div>
-        <div class="card">
-          <h3>Otros proyectos</h3>
-          <p>Desarrollamos productos a medida: plataformas conversacionales, integraciones y automatizaciones.</p>
-          <ul class="list">
-            <li><span class="bullet"></span><span>Arquitectura y APIs listas para crecer.</span></li>
-            <li><span class="bullet"></span><span>Workflows de datos y comunicaciones.</span></li>
-            <li><span class="bullet"></span><span>Pilotos de IA aplicados al negocio.</span></li>
-          </ul>
+      </div>
+    </section>
+
+    <section class="section" id="flujo">
+      <div class="eyebrow"><strong>Flujo</strong> | Como funciona</div>
+      <div class="flow">
+        <div class="card accent">
+          <h2>Del mensaje a la familia, con trazabilidad.</h2>
+          <p>El funcionamiento de NotiFlow es simple: profesores crean grupos, redactan con IA y envian notificaciones directas. Dashboards muestran entregas, lecturas y riesgos de cumplimiento detectados por IA en cada comunicado.</p>
+          <p class="flow-note">Cada paso queda registrado para equipos academicos y administrativos.</p>
+          <div class="chips" style="margin-top:12px;">
+            <span class="chip">IA asistida</span>
+            <span class="chip">Email + push</span>
+            <span class="chip">Dashboards en vivo</span>
+          </div>
         </div>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-head">
+              <div class="step-number">01</div>
+              <div>
+                <div class="step-label">Inicio con el profesor</div>
+              </div>
+            </div>
+            <ul class="list">
+              <li><span class="bullet"></span><span>Acceso seguro con la cuenta del colegio.</span></li>
+              <li><span class="bullet"></span><span>Roles y permisos para profesores, administradores y staff.</span></li>
+              <li><span class="bullet"></span><span>Grupos por curso, nivel o equipo interno.</span></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-head">
+              <div class="step-number">02</div>
+              <div>
+                <div class="step-label">Composicion del mensaje</div>
+              </div>
+            </div>
+            <ul class="list">
+              <li><span class="bullet"></span><span>Editor simple para redactar el comunicado.</span></li>
+              <li><span class="bullet"></span><span>IA revisa redaccion y reglas del colegio.</span></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-head">
+              <div class="step-number">03</div>
+              <div>
+                <div class="step-label">Envio y distribucion</div>
+              </div>
+            </div>
+            <ul class="list">
+              <li><span class="bullet"></span><span>Envio masivo por email y push en la app NotiFlow (Android e iOS).</span></li>
+              <li><span class="bullet"></span><span>Segmentacion por curso, nivel o grupo.</span></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-head">
+              <div class="step-number">04</div>
+              <div>
+                <div class="step-label">Seguimiento y metricas</div>
+              </div>
+            </div>
+            <ul class="list">
+              <li><span class="bullet"></span><span>Dashboards con entregados y fallidos.</span></li>
+              <li><span class="bullet"></span><span>Lecturas visibles por mensaje.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="precios">
+      <div class="pricing-header">
+        <h1 style="margin:0;">Planes NotiFlow</h1>
+        <p>Comunicacion institucional con trazabilidad, compliance e IA. Email + App (push) con metricas de entrega y lectura.</p>
+        <div class="pill-list">
+          <span class="pill">Trazabilidad: entregado / fallido / leido por apoderado</span>
+          <span class="pill">IA para redaccion y cumplimiento de politicas del colegio</span>
+          <span class="pill">Dashboard y reportes listos para direccion y administracion</span>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Piloto</h3>
+          <div class="price">Sin costo</div>
+          <ul class="list">
+            <li><span class="bullet"></span><span>1 curso piloto con email + push.</span></li>
+            <li><span class="bullet"></span><span>Setup guiado y acompanamiento.</span></li>
+            <li><span class="bullet"></span><span>Periodo acotado para validar (sin compromiso).</span></li>
+          </ul>
+          <div class="cta" style="margin-top:12px;">
+            <a class="btn ghost" href="mailto:contacto@nodospa.cl?subject=Piloto%20NotiFlow">Pedir piloto</a>
+          </div>
+          <p class="plan-cta-note">Te respondemos a la brevedad.</p>
+        </div>
+        <div class="card">
+          <h3>Small</h3>
+          <div class="price">$279.900<span style="font-size:1rem; font-weight:600; color:var(--muted);"> + IVA/mes</span></div>
+          <ul class="list">
+            <li><span class="bullet"></span><span>50.000 mensajes/mes (25.000 app + 25.000 email).</span></li>
+            <li><span class="bullet"></span><span>Roles, permisos y dashboards incluidos.</span></li>
+            <li><span class="bullet"></span><span>IA para redaccion y compliance del colegio.</span></li>
+          </ul>
+          <p class="price-note">Precio por mensaje: $5,60 CLP (antes de IVA). Buen punto de partida.</p>
+          <p class="price-note">Anual: 10% dcto. | 3 años: 15% dcto.</p>
+          <div class="cta" style="margin-top:12px;">
+            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Plan%20Small%20NotiFlow">Contratar</a>
+            <a class="btn whatsapp" href="https://wa.me/56992261752" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp +56992261752">WhatsApp</a>
+          </div>
+          <p class="plan-cta-note">Te respondemos a la brevedad.</p>
+        </div>
+        <div class="card accent plan-popular">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+            <h3 style="margin:0;">Medium</h3>
+            <span class="badge-popular">Mas popular</span>
+          </div>
+          <div class="price">$350.000<span style="font-size:1rem; font-weight:600; color:var(--muted);"> + IVA/mes</span></div>
+          <ul class="list">
+            <li><span class="bullet"></span><span>100.000 mensajes/mes (50.000 app + 50.000 email).</span></li>
+            <li><span class="bullet"></span><span>Soporte prioritario + reportes listos.</span></li>
+            <li><span class="bullet"></span><span>IA para redaccion, compliance y metricas.</span></li>
+          </ul>
+          <p class="price-note">Precio por mensaje: $3,50 CLP (antes de IVA). Mejor relacion precio/volumen.</p>
+          <p class="plan-meta">Ideal para comunicacion institucional de todo el colegio.</p>
+          <p class="price-note">Anual: 10% dcto. | 3 años: 15% dcto.</p>
+          <div class="cta" style="margin-top:12px;">
+            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Plan%20Medium%20NotiFlow">Contratar</a>
+            <a class="btn whatsapp" href="https://wa.me/56992261752" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp +56992261752">WhatsApp</a>
+          </div>
+          <p class="plan-cta-note">Te respondemos a la brevedad.</p>
+        </div>
+        <div class="card">
+          <h3>Large</h3>
+          <div class="price">$390.000<span style="font-size:1rem; font-weight:600; color:var(--muted);"> + IVA/mes</span></div>
+          <ul class="list">
+            <li><span class="bullet"></span><span>120.000 mensajes/mes (60.000 app + 60.000 email).</span></li>
+            <li><span class="bullet"></span><span>Integraciones + soporte extendido.</span></li>
+            <li><span class="bullet"></span><span>IA avanzada con mejora continua de compliance.</span></li>
+            <li><span class="bullet"></span><span>Gobernanza: roles, permisos y auditoria.</span></li>
+          </ul>
+          <p class="price-note">Precio por mensaje: $3,25 CLP (antes de IVA). Maxima eficiencia + capacidades avanzadas.</p>
+          <p class="price-note">Anual: 10% dcto. | 3 años: 15% dcto.</p>
+          <p class="plan-meta">Para colegios con alta exigencia operativa o multiples unidades.</p>
+          <div class="cta" style="margin-top:12px;">
+            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Plan%20Large%20NotiFlow">Contratar</a>
+            <a class="btn whatsapp" href="https://wa.me/56992261752" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp +56992261752">WhatsApp</a>
+          </div>
+          <p class="plan-cta-note">Te respondemos a la brevedad.</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px;">
+        <h3>Como se ve en la practica</h3>
+        <p class="price-note" style="margin-top:6px;">En un colegio promedio, esto suele equivaler a menos de $400 CLP por apoderado al mes (dependiendo del tamano y el uso). Es una referencia para dimensionar costo/valor, no un compromiso comercial.</p>
       </div>
     </section>
 
     <section class="section" id="contacto">
-      <div class="eyebrow"><strong>Contacto</strong> | Conversemos</div>
+      <div class="eyebrow"><strong>Contacto</strong> | Quieres NotiFlow</div>
       <div class="card-grid">
         <div class="card accent">
-          <h2>Cuentanos tu reto digital.</h2>
-          <p>Agenda una llamada para hablar de tu producto, de NotiFlow o de un proyecto a medida. Respondemos en menos de un dia habil.</p>
+          <h2>Agenda una demo.</h2>
+          <p>Coordina un piloto o pide acceso anticipado.</p>
           <div class="cta" style="margin-top:12px;">
-            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Quiero%20hablar%20con%20NODO">Escribir ahora</a>
+            <a class="btn primary" href="mailto:contacto@nodospa.cl?subject=Demo%20NotiFlow">Escribir ahora</a>
             <a class="btn whatsapp" href="https://wa.me/56992261752" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn ghost" href="#inicio">Volver arriba</a>
+            <a class="btn ghost" href="index.html#inicio">Volver a NODO</a>
           </div>
         </div>
         <div class="card">
@@ -756,13 +893,12 @@
 
   <footer class="shell">
     <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;">
-      <span>NODO SPA - Ingenieria de software.</span>
+      <span>NotiFlow por NODO SPA.</span>
       <span class="muted">contacto@nodospa.cl | +56 9 9226 1752</span>
     </div>
   </footer>
 
   <script>
-    // Navegacion con efecto al hacer scroll y scroll suave interno.
     const nav = document.querySelector(".nav");
     window.addEventListener("scroll", () => {
       nav.classList.toggle("scrolled", window.scrollY > 12);
@@ -778,7 +914,6 @@
       });
     });
 
-    // Animaciones de aparicion al hacer scroll.
     const revealTargets = Array.from(document.querySelectorAll("main .section, .card"));
     revealTargets.forEach((el, idx) => {
       el.classList.add("reveal");
