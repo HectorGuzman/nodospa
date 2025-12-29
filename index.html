@@ -51,11 +51,11 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(10px);
-      background: rgba(9, 13, 25, 0.86);
+      background: rgba(9, 13, 25, 0.82);
       border: 1px solid rgba(90, 166, 255, 0.2);
-      border-radius: 16px;
-      margin: 18px auto;
-      padding: 12px 18px;
+      border-radius: 12px;
+      margin: 12px auto;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -77,28 +77,22 @@
       font-size: 1rem;
       text-transform: uppercase;
       color: #0b1224;
-      padding: 6px 10px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      padding: 4px 8px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     .brand img {
-      height: 52px;
+      height: 44px;
       width: auto;
       display: block;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.16));
     }
 
     .brand span {
-      padding: 6px 10px;
-      border-radius: 10px;
-      background: rgba(9, 13, 25, 0.08);
-      border: 1px solid rgba(9, 13, 25, 0.12);
-      color: #0b1224;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      display: none;
     }
 
     .nav-links {
@@ -527,18 +521,20 @@
       .nav {
         position: sticky;
         top: 10px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
       }
       .nav-links {
-        gap: 8px;
+        gap: 6px;
         width: 100%;
         justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .nav-links a {
-        flex: 1 1 48%;
-        text-align: center;
+        flex: 0 0 auto;
       }
       h1 {
         font-size: 2.1rem;
@@ -576,7 +572,6 @@
   <nav class="nav shell">
     <div class="brand">
       <img src="logo/NodoH_02.png" alt="Logo de NODO SPA" style="height:52px;">
-      <span>NODO</span>
     </div>
     <div class="nav-links">
       <a href="#inicio">Inicio</a>
